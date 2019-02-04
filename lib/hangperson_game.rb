@@ -53,7 +53,7 @@ class HangpersonGame
   end
   
   def check_win_or_lose
-    guess = word_with_guesses
+    guess = self.word_with_guesses
     
 =begin 
   If the result of the word_with_guesses() method is '-' then the player has wrong guesses, therefore the player has more chances of losing.

@@ -110,7 +110,7 @@ describe HangpersonGame do
     before :each do 
       @game = HangpersonGame.new('dog')
     end
-    it 'should be win when all letters guessed' do
+    it 'should be win when all letters guessed'  do
       guess_several_letters(@game, 'ogd')
       expect(@game.check_win_or_lose).to eq(:win)
     end
