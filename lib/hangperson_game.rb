@@ -52,6 +52,24 @@ class HangpersonGame
     return result
   end
   
+  def check_win_or_lose
+    guess = word_with_guesses
+    
+=begin 
+  If the result of the word_with_guesses() method is '-' then the player has wrong guesses, therefore the player has more chances of losing.
+  If the player guessed a letter 7 times then the man is hanged and the player loses.
+  If the result of the word_with_guesses() method is the correct word and the player guessed a letter less than 7 times then the player wins.
+  If none of the above are true then the game continues.
+=end  
+    if guess == '-' or @wrong_guesses.length == 7
+      :lose
+    elsif guess == @word and @wrong_guesses.length < 7
+      :win
+    else
+      :play
+    end
+  end
+  
   # You can test it by running $ bundle exec irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> HangpersonGame.get_random_word
   #  => "cooking"   <-- some random word
