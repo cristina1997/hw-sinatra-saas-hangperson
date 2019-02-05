@@ -47,19 +47,21 @@ class HangpersonApp < Sinatra::Base
       flash[:message] = "Invalid guess."
     end
     
+    if not result.nil? and not result or @game.guesses.include? letter or @game.wrong_guesses.include? letter
+      flash[:message] = "You have already used that letter."
+    else  @game.guess.include? 
+      flash[:message] = "Invalid guess."
+    end
+    
     # if not result.nil? and not result
     #   flash[:message] = "You have already used that letter."
+    # else
+    #   if 
+    #     flash[:message] = "You have already used that letter."
+    #   elsif @game.guess.include? result or not letter =~ /^[a-zA-Z]$/i or letter == nil
+    #     flash[:message] = "Invalid letter"
+    #   end
     # end
-    
-    if not result.nil? and not result
-      flash[:message] = "You have already used that letter."
-    else
-      if @game.guesses.include? letter or @game.wrong_guesses.include? letter
-        flash[:message] = "You have already used that letter."
-      elsif @game.guess.include? result or not letter =~ /^[a-zA-Z]$/i or letter == nil
-        flash[:message] = "Invalid letter"
-      end
-    end
     
     redirect '/show'
   end
