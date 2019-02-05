@@ -44,7 +44,7 @@ class HangpersonApp < Sinatra::Base
     begin
       if @game.guesses.include? letter or @game.wrong_guesses.include? letter
         flash[:message] = "You have already used that letter."
-      elsif @game.guess.include? result
+      elsif @game.guess.include? result or not letter =~ /^[a-zA-Z]$/i or letter == nil
         flash[:message] = "Invalid letter"
       end
     rescue ArgumentError
