@@ -41,9 +41,13 @@ class HangpersonApp < Sinatra::Base
     letter = params[:guess].to_s[0]
     result = @game.guess(letter)
     
-    if @game.guesses.include? letter or @game.wrong_guesses.include? letter
-      flash[:message] = "You have already used that letter."
-    elsif @game.guess.include? result or letter == nil? or letter =~ /^[a-zA-Z]$/i
+    if not nil? letter or @game.guess =~ /^[a-zA-Z]$/i
+      if @game.guesses.include? letter or @game.wrong_guesses.include? letter
+        flash[:message] = "You have already used that letter."
+      elsif @game.guess.include? result
+        flash[:message] = "Invalid letter"
+      end
+    else
       flash[:message] = "Invalid letter"
     end
     
