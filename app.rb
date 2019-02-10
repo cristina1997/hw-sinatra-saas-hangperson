@@ -65,11 +65,13 @@ class HangpersonApp < Sinatra::Base
   end
   
   get '/win' do
+    # If the user tries to access the /win page, he/she is redirected to the /show page
     redirect '/show' if not @game.check_win_or_lose == :win
     erb :win # You may change/remove this line
   end
   
   get '/lose' do
+    # If the user tries to access the /lose page, he/she is redirected to the /show page
     redirect '/show' if not @game.check_win_or_lose == :lose
     erb :lose # You may change/remove this line
   end
